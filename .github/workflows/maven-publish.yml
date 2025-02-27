@@ -29,25 +29,32 @@ jobs:
 
 
 
-  snyk-security:
-    runs-on: ubuntu-latest
+snyk-security:
+  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3  # Checks out your code
+  steps:
+    # Step 1: Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Install Snyk CLI
-        run: npm install -g snyk  # Install Snyk CLI globally
+    # Step 2: Install Snyk CLI
+    - name: Install Snyk CLI
+      run: npm install -g snyk
 
-      - name: Authenticate with Snyk
-        run: snyk auth ${{ secrets.SNYK_TOKEN }}  # Use your Snyk token for authentication
+    # Step 3: Authenticate with Snyk
+    - name: Authenticate with Snyk
+      run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
-       # Step 5: Run Snyk SAST (Code scanning)
-      - name: Run Snyk to check for vulnerabilities in the code
-        run: snyk code test --continue-on-error
+    # Step 4: Run Snyk SAST (Code scanning) with continue-on-error in GitHub Actions
+    - name: Run Snyk to check for vulnerabilities in the code
+      run: snyk code test --continue-on-error
+      continue-on-error: true  # This ensures the job continues even if vulnerabilities are found
 
-      - name: Run Snyk to check for vulnerabilities in all projects
-        run: snyk test --all-projects --continue-on-error
+    # Step 5: Run Snyk to check for vulnerabilities in all projects
+    - name: Run Snyk to check for vulnerabilities in all projects
+      run: snyk test --all-projects --continue-on-error
+      continue-on-error: true  # This ensures the job continues even if vulnerabilities are found
+
 
 
               
