@@ -55,6 +55,9 @@ jobs:
       run: snyk test --all-projects --continue-on-error
       continue-on-error: true  # This ensures the job continues even if vulnerabilities are found
 
+    - name: Upload scan results to Snyk UI
+      run: snyk monitor  # Uploads results to the Snyk dashboard
+
 
 
               
