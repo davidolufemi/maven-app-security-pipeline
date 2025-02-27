@@ -46,17 +46,17 @@ jobs:
       run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
     # Step 4: Run Snyk SAST (Code scanning) with continue-on-error in GitHub Actions
-    - name: Run Snyk to check for vulnerabilities in the code
+    - name: Run Snyk to check for vulnerabilities in the code (SAST)
       run: snyk code test --continue-on-error
       continue-on-error: true  # This ensures the job continues even if vulnerabilities are found
 
-    # Step 5: Run Snyk to check for vulnerabilities in all projects
+    # Step 5: Run Snyk to check for vulnerabilities in all projects (SCA)
     - name: Run Snyk to check for vulnerabilities in all projects
       run: snyk test --all-projects --continue-on-error
       continue-on-error: true  # This ensures the job continues even if vulnerabilities are found
 
     - name: Upload scan results to Snyk UI
-      run: snyk monitor  # Uploads results to the Snyk dashboard
+      run: snyk monitor --all-projects  # Uploads results to the Snyk dashboard
 
 
 
