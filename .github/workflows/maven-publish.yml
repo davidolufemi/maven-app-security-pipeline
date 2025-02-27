@@ -42,6 +42,10 @@ jobs:
       - name: Authenticate with Snyk
         run: snyk auth ${{ secrets.SNYK_TOKEN }}  # Use your Snyk token for authentication
 
+       # Step 5: Run Snyk SAST (Code scanning)
+      - name: Run Snyk to check for vulnerabilities in the code
+        run: snyk code test 
+
       - name: Run Snyk to check for vulnerabilities in all projects
         run: snyk test --all-projects
 
