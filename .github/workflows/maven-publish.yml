@@ -29,10 +29,10 @@ jobs:
 
 
 
-snyk-security:
-  runs-on: ubuntu-latest
+  snyk-security:
+   runs-on: ubuntu-latest
 
-  steps:
+   steps:
     # Step 1: Checkout code
     - name: Checkout code
       uses: actions/checkout@v3
