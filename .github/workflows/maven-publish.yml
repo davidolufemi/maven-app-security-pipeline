@@ -28,21 +28,19 @@ jobs:
       run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml clean package
 
 
-  snyk-security:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: Run Snyk test
-        run: snyk test --all-projects
-
- 
-
-
-  # build-docker-image:
+  security:
+      runs-on: ubuntu-latest
+      steps:
+          - uses: actions/checkout@master
+          - name: Run Snyk to check for vulnerabilities
+            uses: snyk/actions/maven@master
+            env:
+              SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  
+   
+  
+  
+    # build-docker-image:
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: Checkout
