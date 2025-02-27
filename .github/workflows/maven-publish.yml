@@ -27,35 +27,19 @@ jobs:
     - name: Build with Maven
       run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml clean package
 
-  sonarcloud:
-    name: SonarCloud Analysis
+  sonarqube:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Set up JDK 11 (You can change the version if needed)
-      - name: Set up JDK 11
-        uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-          cache: 'maven'
-
-      # Cache SonarCloud scanner to speed up subsequent builds
-      - name: Cache SonarCloud scanner
-        uses: actions/cache@v2
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar-${{ hashFiles('**/*.java') }}
-
-      # Run the SonarCloud scan
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@v1
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: sonar scan for source code
+      uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        # Disabling shallow clones is recommended for improving the relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v4 # Ex: v4.1.0, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
     
       
 
