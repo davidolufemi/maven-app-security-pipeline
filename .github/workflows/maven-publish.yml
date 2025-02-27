@@ -1,7 +1,7 @@
 # This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
 
-name: Maven Package
+name: Maven App
 
 on:
   workflow_dispatch
@@ -26,6 +26,22 @@ jobs:
 
     - name: Build with Maven
       run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml clean package
+
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+    - name: sonar scan for source code
+      uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        # Disabling shallow clones is recommended for improving the relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v4 # Ex: v4.1.0, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   
+    
+    
       
 
     
