@@ -54,9 +54,6 @@ jobs:
       # Run the SonarCloud scan
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v1
-        with:
-          sonar-project-key: davidolufemi_Jenkins-Zero-To-Hero
-          sonar-organization: davidolufemi
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
