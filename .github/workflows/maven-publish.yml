@@ -25,6 +25,6 @@ jobs:
         cache: 'maven'
 
     - name: Build with Maven
-      run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/src/main clean package
+      run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/src/main/pom.xml clean package
 
     
