@@ -37,7 +37,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Run Snyk test
-        run: snyk test 
+        run: snyk test ./java-maven-sonar-argocd-helm-k8s/spring-boot-app/src/main
   
  
 
