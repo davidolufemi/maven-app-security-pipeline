@@ -31,6 +31,12 @@ jobs:
       run: |
         echo "Listing files in the workspace..."
         ls -al /home/runner/work/Jenkins-Zero-To-Hero/Jenkins-Zero-To-Hero/java-maven-sonar-argocd-helm-k8s/spring-boot-app/target/
+        
+    - name: Upload JAR artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: spring-boot-web.jar
+        path: /home/runner/work/Jenkins-Zero-To-Hero/Jenkins-Zero-To-Hero/java-maven-sonar-argocd-helm-k8s/spring-boot-app/target/spring-boot-web.jar
 
 
   snyk-security:
