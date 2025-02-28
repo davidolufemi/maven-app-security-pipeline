@@ -118,6 +118,10 @@ jobs:
       - name: SSH into EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@3.87.10.247 "echo 'Successfully logged in!'"
+          
+      - name: Pull latest image to EC2
+        run: |
+          docker pull davidayo97/maven-app:${GITHUB_SHA}
   
       
 
