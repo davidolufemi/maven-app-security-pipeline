@@ -101,7 +101,7 @@ jobs:
       - name: Push Docker image
         run: docker push davidayo97/maven-app:${GITHUB_SHA}
 
-  deploy:
+  ssh-ec2:
     runs-on: ubuntu-latest
 
     steps:
