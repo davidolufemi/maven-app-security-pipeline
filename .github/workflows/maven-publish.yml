@@ -79,13 +79,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: spring-boot-web.jar
-          path: /tmp
+          #path: /tmp
         
-
       - name: List Downloaded File
-        run: cd /tmp
-      - name: List Downloaded File
-        run: ls -al
+        run: ls -al $GITHUB_WORKSPACE
         
       - name: Checkout
         uses: actions/checkout@v4
