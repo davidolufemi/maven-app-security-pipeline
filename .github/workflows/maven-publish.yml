@@ -71,6 +71,7 @@ jobs:
   
   
   build-and-push-docker-image:
+    needs: build
     runs-on: ubuntu-latest
     steps:
 
