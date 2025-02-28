@@ -111,6 +111,9 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           
+      - name: Add EC2 host to known hosts
+        run: |
+          ssh-keyscan -H 3.87.10.247 >> ~/.ssh/known_hosts
 
       - name: SSH into EC2
         run: |
