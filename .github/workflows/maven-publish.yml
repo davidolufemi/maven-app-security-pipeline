@@ -87,7 +87,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Docker image
-        run:  docker buildx build -t maven-app:${GITHUB_SHA} .
+        run:  docker buildx build -t davidayo97/maven-app:${GITHUB_SHA} .
 
       - name: Show Docker images
         run: docker images
