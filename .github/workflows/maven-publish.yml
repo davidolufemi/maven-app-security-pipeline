@@ -102,6 +102,7 @@ jobs:
         run: docker push davidayo97/maven-app:${GITHUB_SHA}
 
   ssh-ec2:
+    needs: build-and-push-docker-image
     runs-on: ubuntu-latest
 
     steps:
