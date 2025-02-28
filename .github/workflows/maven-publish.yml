@@ -30,7 +30,7 @@ jobs:
     - name: List files in the workspace
       run: |
         echo "Listing files in the workspace..."
-        ls -al /home/runner/work/maven-app/maven-app
+        ls -al
 
 
   snyk-security:
