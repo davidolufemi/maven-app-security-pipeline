@@ -85,7 +85,7 @@ jobs:
       - name: List Downloaded File
         run: cd /tmp
       - name: List Downloaded File
-        run: ls
+        run: ls -al
         
       - name: Checkout
         uses: actions/checkout@v4
