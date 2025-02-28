@@ -79,8 +79,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: spring-boot-web.jar
-          path: .
-          run: ls -al
+          path: /tmp
+        
+
+      - name: List Downloaded File
+        run: cd /tmp
+      - name: List Downloaded File
+        run: ls
         
       - name: Checkout
         uses: actions/checkout@v4
