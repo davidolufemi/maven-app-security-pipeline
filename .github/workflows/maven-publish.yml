@@ -100,6 +100,24 @@ jobs:
 
       - name: Push Docker image
         run: docker push davidayo97/maven-app:${GITHUB_SHA}
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          
+      - name: Add EC2 host to known hosts
+        run: |
+          ssh-keyscan -H your-ec2-public-ip >> ~/.ssh/known_hosts
+
+      - name: SSH into EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@your-ec2-public-ip "echo 'Successfully logged in!'"
   
       
 
