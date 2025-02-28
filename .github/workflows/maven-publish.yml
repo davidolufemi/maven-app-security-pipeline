@@ -78,7 +78,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: spring-boot-web.jar
-          path: ./tmp
+          path: .
         
       - name: Checkout
         uses: actions/checkout@v4
