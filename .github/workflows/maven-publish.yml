@@ -80,6 +80,7 @@ jobs:
         with:
           name: spring-boot-web.jar
           path: .
+          run: ls -al
         
       - name: Checkout
         uses: actions/checkout@v4
