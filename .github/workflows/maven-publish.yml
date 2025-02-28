@@ -27,9 +27,10 @@ jobs:
     - name: Build with Maven
       run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml clean package
 
-    - name: Copy JAR to Docker Context
-      run: cp java-maven-sonar-argocd-helm-k8s/spring-boot-app/target/spring-boot-web.jar ./target/spring-boot-web.jar
-
+    - name: List files in the workspace
+      run: |
+        echo "Listing files in the workspace..."
+        ls -al /home/runner/work/maven-app/maven-app
 
 
   snyk-security:
