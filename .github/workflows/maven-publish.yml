@@ -88,6 +88,9 @@ jobs:
         
       - name: Rename Downloaded File
         run: mv spring-boot-web.jar app.jar
+
+      - name: Rename Downloaded File
+        run: ls -al   
         
       - name: Checkout
         uses: actions/checkout@v4
