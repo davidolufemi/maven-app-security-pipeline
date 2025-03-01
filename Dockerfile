@@ -6,7 +6,7 @@ WORKDIR /build
 
 # Copy the pom.xml file and the src folder into the container
 COPY pom.xml .
-COPY src ./src
+COPY java-maven-sonar-argocd-helm-k8s/spring-boot-app/src ./src
 
 # Build the application (This will run 'mvn clean package' and build the JAR file)
 RUN mvn clean package -DskipTests
