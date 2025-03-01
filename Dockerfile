@@ -7,7 +7,7 @@ ARG artifact=$GITHUB_WORKSPACE
 
 WORKDIR /opt/app
 
-COPY app.jar .
+COPY app.jar /opt/app
 
 # This should not be changed
 ENTRYPOINT ["java","-jar","app.jar"]
