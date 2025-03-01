@@ -79,10 +79,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: spring-boot-web.jar
-          #path: /tmp
         
       - name: List Downloaded File
         run: ls -al $GITHUB_WORKSPACE
+        
+      - name: cd workspace 
+        run: cd $GITHUB_WORKSPACE
+        
+      - name: Rename Downloaded File
+        run: mv spring-boot-web.jar app.jar
         
       - name: Checkout
         uses: actions/checkout@v4
