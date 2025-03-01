@@ -5,7 +5,12 @@ name: Maven App
 
 on:
   workflow_dispatch
-
+  
+permissions:
+  contents: read   # Only allows read access to repository content
+  issues: write    # Allows write access to issues (if needed)
+  pull-requests: write  # Allows write access to pull requests (if needed)
+  actions: read    # Allows read access to Actions API
 
 jobs:
   build:
