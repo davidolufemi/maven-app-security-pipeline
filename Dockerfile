@@ -12,7 +12,7 @@ COPY java-maven-sonar-argocd-helm-k8s/spring-boot-app/src ./src
 RUN mvn clean package -DskipTests
 
 # Now, use a smaller JRE image to run the application
-FROM adoptopenjdk/openjdk17:alpine-jre
+FROM eclipse-temurin:17-jre-alpine
 
 # Set the working directory inside the container for the final image
 WORKDIR /opt/app
