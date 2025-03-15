@@ -32,11 +32,6 @@ jobs:
     - name: Build with Maven
       run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml clean package
 
-    - name: List files in the workspace
-      run: |
-        echo "Listing files in the workspace..."
-        ls -al /home/runner/work/Jenkins-Zero-To-Hero/Jenkins-Zero-To-Hero/java-maven-sonar-argocd-helm-k8s/spring-boot-app/target/
-        
     - name: Upload JAR artifact
       uses: actions/upload-artifact@v4
       with:
