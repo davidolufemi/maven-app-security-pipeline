@@ -76,7 +76,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build project with Maven
-        run: mvn clean install
+        run: mvn -f java-maven-sonar-argocd-helm-k8s/spring-boot-app/pom.xml clean package
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
